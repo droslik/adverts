@@ -1,0 +1,30 @@
+version: "3.4"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+     - .:/app
+     - static:/static/
+    depends_on:
+     - postgres
+
+
+  postgres:
+    container_name: advertisements_postgres
+    restart: always
+    image: postgres:14
+    volumes:
+     - /var/lib/postgresql/_data/
+
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+volumes:
+  static:

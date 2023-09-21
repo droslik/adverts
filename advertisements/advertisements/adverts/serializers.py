@@ -7,4 +7,4 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Advert
-        exclude = ('id',)
+        fileds = '__all__'
